@@ -17,6 +17,7 @@ These instructions have been verified on Ubuntu 12.04 LTS. Other distributions o
 ## Before building
 The switch makes use of the NetBee library to parse packets, so we need to install it first.  
 Goto https://github.com/MeshSr/netbee-lite for more detailed instructions.  
+We have provided pre-compiled library files in ofsoftswitch/lib. If you want to update them with new versions, just follow step 2, or you can skip it.  
 
 1. Get ofsoftswtich sorce code
 
@@ -24,7 +25,6 @@ Goto https://github.com/MeshSr/netbee-lite for more detailed instructions.
     $ git clone https://github.com/MeshSr/ofsoftswitch.git
     ```
 
-We have provided pre-compiled library files in ofsoftswitch/lib. If you want to update them with new versions, just follow step 2, or you can skip it.  
 2. After successfully compiling the netbee-lite project, you should add its shared libraries built in `<your-path-to>/netbee-lite/bin/` to `ofsoftswitch/lib` directory.  
 
     ```

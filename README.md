@@ -12,55 +12,30 @@ The following components are available in this package:
 
 # Getting Started
 
-These instructions have been tested on Ubuntu 12.04. Other distributions or versions may need different steps.
+These instructions have been verified on Ubuntu 12.04 LTS. Other distributions or versions may need different steps.
 
 ## Before building
 The switch makes use of the NetBee library to parse packets, so we need to install it first.
+Goto https://github.com/MeshSr/netbee-lite for more detailed instructions.
 
-1. Install the following packages:
-
-    ```
-    $ sudo apt-get install cmake libpcap-dev libxerces-c2-dev libpcre3-dev flex bison
-    ```
-
-2. Download and unpack the source code from: http://www.nbee.org/download/nbeesrc-12-05-16.php
-
-3. Create the build system
+1. Get ofsoftswtich sorce code
 
     ```
-    $ cd nbeesrc/src
-    $ cmake .
+    $ git clone https://github.com/MeshSr/ofsoftswitch.git
     ```
 
-4. Compile
+We have provided pre-compiled library files in ofsoftswitch/lib. If you want to update them with new versions, just follow step 2, or you can skip it.
+2. After successfully compiling the netbee-lite project, you should add its shared libraries built in `<your-path-to>/netbee-lite/bin/` to `ofsoftswitch/lib` directory
 
     ```
-    $ make
-    ```
-
-5. Add the shared libraries built in `/nbeesrc/bin/` to your `/usr/local/lib` directory
-
-    ```
-    $ sudo cp ../bin/libn*.so /usr/local/lib
-    ```
-
-6. Run `ldconfig`
-
-    ```
-    $ sudo ldconfig
-    ```
-
-7. Put the folder `nbeesrc/include` in the `/usr/include`
-
-    ```
-    $ sudo cp -R ../include /usr/include
+    $ cp <your-path-to>/netbee-lite/bin/libn*.so ofsoftswitch/lib
     ```
 
 ## Building
 Run the following commands in the `of13softswitch` directory to build and install everything:
 
     $ ./boot.sh
-    $ ./configure
+    $ ./configure  --build=i686-pc-linux --host=arm-linux --target=i686-linux LIBS="-L./lib -lnbee -lnbprotodb -lnbnetvm -lnbpflcompiler -lnbsockutils -lpcap -lpcre -lxerces-c -licuuc -licudata"
     $ make
     $ sudo make install
 

@@ -35,7 +35,7 @@ We have provided pre-compiled library files in ofsoftswitch/lib. If you want to 
 Run the following commands in the `of13softswitch` directory to build and install everything:
 
     $ ./boot.sh
-    $ ./configure  --build=i686-pc-linux --host=arm-linux --target=i686-linux LIBS="-L./lib -lnbee -lnbprotodb -lnbnetvm -lnbpflcompiler -lnbsockutils -lpcap -lpcre -lxerces-c -licuuc -licudata"
+    $ ./configure  --build=i686-pc-linux --host=arm-xilinx-linux-gnueabi --target=i686-linux LIBS="-L./lib -lnbee -lnbprotodb -lnbnetvm -lnbpflcompiler -lnbsockutils -lpcap -lpcre -lxerces-c -licuuc -licudata"
     $ make
     $ sudo make install
 
